@@ -74,11 +74,19 @@ class MovieRentalSystem:
 
 def what_do():
     while True:
-        entrypoint = str(input('Welcome, what do you want to do in Rental system ?'))
+        entrypoint = input('Welcome, what do you want to do in Rental system ?')
         if entrypoint.lower() == 'show':
             print(f'Avaliable movies :\n')
             for move in system.show():
                 print(move)
+        elif entrypoint.lower() == 'get':
+            try:
+                x = int(input('Add Movie ID '))
+                print(system.get(x))
+            except ValueError:
+                print('Movie with this ID doesnt exist !')
+        else:
+            print(f'Command {entrypoint} doesnt not exist, try again \n')
 
 
 system = MovieRentalSystem()
